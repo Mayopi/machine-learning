@@ -15,25 +15,23 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
+from sklearn.datasets import load_iris
 
-# Load dataset
-url = "./data/iris.csv"
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-dataset = read_csv(url, names=names)
-
+# load dataset
+dataset = load_iris()
 # dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
 
-# # histograms
+# histograms
 # dataset.hist()
 
-# # scatter plot matrix
+# scatter plot matrix
 # scatter_matrix(dataset)
 
 # plt.show()
 
-array = dataset.values
+array = dataset.data
 X = array[:,0:4]
-y = array[:,4]
+y = dataset.target
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1)
 
 # # Spot Check Algorithms
